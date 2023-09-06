@@ -1,0 +1,233 @@
+@startuml
+class org.example.app.utils.AppStarter {
++ {static} void startApp()
+}
+class org.example.app.services.UserCreateService {
+~ UserCreateRepository repository
++ String createUser(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.services.UserPasswordUpdateService {
+~ UserPasswordUpdateRepository repository
++ String updateUser(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.controllers.UserEmailUpdateController {
+~ UserEmailUpdateService service
+~ UserEmailUpdateView view
++ void updateUserEmail()
+}
+class org.example.app.services.UserEmailUpdateService {
+~ UserEmailUpdateRepository repository
++ String updateUserEmail(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.repositories.UserUpdateRepository {
++ String updateUserData(User)
++ String updateAllUserData(User)
+}
+class org.example.app.repositories.UserCreateRepository {
++ String createUser(User)
+}
+class org.example.app.views.UserNameUpdateView {
++ String[] getData()
++ void getOutput(String)
+}
+class org.example.app.exceptions.UpdateException {
+~ Map<String,String> errors
++ String getErrors(Map<String,String>)
+}
+class org.example.app.controllers.UserReadController {
+~ UserReadService service
+~ UserReadView view
++ void readUser()
+}
+class org.example.app.utils.EmailValidator {
++ {static} boolean isEmailValid(String)
+}
+class org.example.app.repositories.UserReadRepository {
++ List<User> readUsers()
+}
+class org.example.app.views.UserCreateView {
++ String[] getData()
++ void getOutput(String)
+}
+class org.example.app.repositories.UserNameUpdateRepository {
++ String updateUserName(User)
+- String updateNameById(User)
+}
+class org.example.app.services.AppService {
++ void createUser()
++ void readUsers()
++ void updateUser()
++ void updateUsername()
++ void updateUserEmail()
++ void updateUserPassword()
++ void deleteUser()
++ void getNoSuchOption(int)
++ {static} boolean contains(int[],int)
+}
+class org.example.app.views.UserPasswordUpdateView {
++ String[] getData()
++ void getOutput(String)
+}
+class org.example.app.controllers.UserUpdateController {
+~ UserUpdateView view
+~ UserUpdateService service
++ void updateUser()
+}
+class org.example.app.services.UserUpdateService {
+~ UserUpdateRepository repository
++ String updateUser(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.database.Credentials {
++ {static} String DB_PASS
+}
+class org.example.app.views.UserUpdateView {
++ String[] getData()
++ void getOutput(String)
+}
+class org.example.app.exceptions.OptionException {
+}
+class org.example.app.exceptions.CreateException {
+~ Map<String,String> errors
++ String getErrors(Map<String,String>)
+}
+class org.example.app.entity.User {
+- int id
+- String userName
+- String email
+- String password
++ int getId()
++ void setId(int)
++ String getUserName()
++ void setUserName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
+}
+class org.example.app.views.AppView {
+~ Scanner scanner
+~ int option
++ int chooseOption()
+- void showMenu()
++ void getOutput(int,String)
+}
+class org.example.app.repositories.UserEmailUpdateRepository {
++ String updateUserLogin(User)
+- String updateEmailById(User)
+}
+class org.example.app.services.UserNameUpdateService {
+~ UserNameUpdateRepository repository
++ String updateUserName(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.repositories.UserDeleteRepository {
++ String deleteUser(User)
++ String deleteUserById(User)
+}
+class org.example.app.controllers.AppController {
+~ AppView view
+~ AppService service
++ void runApp()
+- void filterChoice(int)
+}
+class org.example.app.utils.UserNameValidator {
++ {static} boolean isUserNameValid(String)
+}
+class org.example.app.views.UserReadView {
++ void getOutput(String)
+}
+class org.example.app.views.UserEmailUpdateView {
++ String[] getData()
++ void getOutput(String)
+}
+class org.example.app.repositories.UserPasswordUpdateRepository {
++ String updateUser(User)
+- String updatePasswordById(User)
+}
+class org.example.app.controllers.UserDeleteController {
+~ UserDeleteService service
+~ UserDeleteView view
++ void deleteUser()
+}
+class org.example.app.utils.HibernateUtil {
+- {static} SessionFactory sessionFactory
++ {static} SessionFactory getSessionFactory()
+- {static} Configuration getConfiguration()
+}
+class org.example.app.services.UserDeleteService {
+~ UserDeleteRepository repository
++ String deleteUser(String[])
+- Map<String,String> validateData(String[])
+- User convertData(String[])
+}
+class org.example.app.utils.IdValidator {
++ {static} boolean isIdValid(String)
+}
+class org.example.app.utils.Constants {
++ {static} String DB_DRIVER
++ {static} String DB_URL
++ {static} String DB_USER
++ {static} String USERNAME_REGEX
++ {static} String WRONG_USERNAME_REGEX
++ {static} String PASSWORD_REGEX
++ {static} String WRONG_PASSWORD_MSG
++ {static} String EMAIL_RGX
++ {static} String WRONG_EMAIL_MSG
++ {static} String ID_RGX
++ {static} String WRONG_ID_MSG
++ {static} String DATA_ABSENT_MSG
++ {static} String DATA_INSERT_MSG
++ {static} String DATA_UPDATE_MSG
++ {static} String DATA_DELETE_MSG
++ {static} String APP_CLOSE_MSG
++ {static} String INPUT_REQ_MSG
++ {static} String INCORRECT_VALUE_MSG
++ {static} String ID_NO_EXISTS_MSG
+}
+class org.example.app.services.UserReadService {
+~ UserReadRepository repository
++ String readUser()
+}
+class org.example.app.App {
++ {static} void main(String[])
+}
+class org.example.app.controllers.UserNameUpdateController {
+~ UserNameUpdateService service
+~ UserNameUpdateView view
++ void updateUserLogin()
+}
+class org.example.app.controllers.UserCreateController {
+~ UserCreateView view
+~ UserCreateService service
++ void createUser()
+}
+class org.example.app.controllers.UserPasswordUpdateController {
+~ UserPasswordUpdateService service
+~ UserPasswordUpdateView view
++ void updateUserPassword()
+}
+class org.example.app.utils.IdChecker {
++ {static} boolean isIdExists(User)
+}
+class org.example.app.utils.PasswordValidator {
++ {static} boolean isPasswordValid(String)
+}
+class org.example.app.views.UserDeleteView {
++ String[] getData()
++ void getOutput(String)
+}
+
+
+org.example.app.exceptions.RuntimeException <|-- org.example.app.exceptions.UpdateException
+org.example.app.exceptions.Exception <|-- org.example.app.exceptions.OptionException
+org.example.app.exceptions.RuntimeException <|-- org.example.app.exceptions.CreateException
+@enduml
