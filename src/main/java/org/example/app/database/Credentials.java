@@ -5,5 +5,5 @@ public final class Credentials {
     private Credentials() {
     }
 
-    public final static String DB_PASS = "10621062";
+    public final static String DB_PASS = "your_password";
 }
