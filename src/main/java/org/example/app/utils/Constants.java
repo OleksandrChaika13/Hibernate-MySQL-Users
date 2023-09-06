@@ -7,13 +7,20 @@ public final class Constants {
     public final static String DB_USER = "root";
 
     public final static String USERNAME_REGEX = "^[a-zA-Z0-9]+$";
-    public final static String WRONG_USERNAME_REGEX = "Wrong username input.";
+    public final static String WRONG_USERNAME_REGEX = "Wrong username input." +
+            "\nNo spaces and only Latin characters and numbers are required.";
 
     public final static String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,20}$";
-    public final static String WRONG_PASSWORD_MSG = "Wrong password input.";
+    public final static String WRONG_PASSWORD_MSG = """
+            Wrong password input.
+            Must contain at least one digit (0-9).
+            Must include at least one lowercase letter (a-z).
+            Must include at least one uppercase letter (A-Z).
+            Should be between 8 and 20 characters in length.
+            """;
 
     public final static String EMAIL_RGX = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
-    public final static String WRONG_EMAIL_MSG = "Wrong email input.";
+    public final static String WRONG_EMAIL_MSG = "Wrong email input. Maybe you forgot about '@' or '.com'?";
 
     public final static String ID_RGX = "^[1-9]$";
     public final static String WRONG_ID_MSG = "Wrong id input.";

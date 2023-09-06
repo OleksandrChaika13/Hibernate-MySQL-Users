@@ -40,7 +40,7 @@ public class UserEmailUpdateService {
             errors.put("id", Constants.WRONG_ID_MSG);
 
         if (EmailValidator.isEmailValid(data[1]))
-            errors.put("email", Constants.WRONG_PASSWORD_MSG);
+            errors.put("email", Constants.WRONG_EMAIL_MSG);
 
         return errors;
     }
