@@ -37,7 +37,7 @@ public class UserUpdateService {
         if (IdValidator.isIdValid(data[0]))
             errors.put("id", Constants.WRONG_ID_MSG);
 
-        if (data[1].isEmpty() || LoginValidator.isLoginValid(data[1])) {
+        if (data[1].isEmpty() || UserNameValidator.isUserNameValid(data[1])) {
             errors.put("user name", Constants.WRONG_USERNAME_REGEX);
         }
 

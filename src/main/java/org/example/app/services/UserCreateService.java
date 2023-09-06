@@ -5,7 +5,7 @@ import org.example.app.exceptions.CreateException;
 import org.example.app.repositories.UserCreateRepository;
 import org.example.app.utils.Constants;
 import org.example.app.utils.EmailValidator;
-import org.example.app.utils.LoginValidator;
+import org.example.app.utils.UserNameValidator;
 import org.example.app.utils.PasswordValidator;
 
 import java.util.HashMap;
@@ -37,7 +37,7 @@ public class UserCreateService {
     private Map<String, String> validateData(String[] data) {
         Map<String, String> errors = new HashMap<>();
 
-        if (data[0].isEmpty() || LoginValidator.isLoginValid(data[0])) {
+        if (data[0].isEmpty() || UserNameValidator.isUserNameValid(data[0])) {
             errors.put("user name", Constants.WRONG_USERNAME_REGEX);
         }
 
